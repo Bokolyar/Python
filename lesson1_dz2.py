@@ -12,4 +12,3 @@ Minutes = Seconds % 3600 // 60
 Seconds = Seconds % 60
 # print('{:02}:{:02}:{:02}'.format(Hours, Minutes, Seconds))
 print(f'{Hours:02}:{Minutes:02}:{Seconds:02}')
-
