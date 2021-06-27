@@ -11,5 +11,3 @@ for i in range(0, len(spisok)-1, 2):
 spisok1.append(spisok[-1]) if len(spisok) % 2 != 0 else None
 
 print(spisok1)
-
-
