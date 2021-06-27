@@ -1,17 +1,4 @@
-# l2.dz6
-
-# 1-й вариант: функция удаления задвоенных элементов, через перевод в множество и обратно
-def convert(list1):
-    return list(set(list1))
-
-
-# 2-й вариант: функция удаления задвоенных элементов, путем сравнения
-def convert1(list1):
-    for elem in list1:
-        if list1.count(elem) >= 2:
-            list1.remove(elem)
-    return list1
-
+# l2.dz6 ver.2
 
 # формируем базовую структуру, чтобы упростить ввод
 structure = [
@@ -19,7 +6,6 @@ structure = [
     (2, {"название": "принтер", "цена": 6000, "количество": 2, "ед": "шт."}),
     (3, {"название": "сканер", "цена": 2000, "количество": 7, "ед": "шт."})
 ]
-
 # делаем меню для программы
 while True:
     menu = int(input("Меню: 1 - добавить товар, 2 - посмотреть список товаров, 3 - посмотреть аналитику, 4 - выход \n"))
@@ -34,15 +20,11 @@ while True:
             print(f'{structure[i][0]}: {structure[i][1]}')
     elif menu == 3:
         analytics = {}
-        temp_list = [[], [], [], []]
-        # формируем список, каждый элемент которого список характеристик
-        for i in range(len(structure[0][1])):
-            for j in range(len(structure)):
-                temp_list[i].append(structure[j][1][list(structure[0][1])[i]])
-        # удаляем дубликаты и задаем структуру словаря для аналитики
-        for i in range(len(temp_list)):
-            temp_list[i] = convert1(temp_list[i])
-            analytics.update({list(structure[0][1])[i]: temp_list[i]})
+        sp_dict = list(zip(*structure))[1]
+        for j in list(structure[0][1]):
+            a = [i[j] for i in sp_dict]
+            a = list(set(a))
+            analytics.update({j: a})
         print(analytics)
     elif menu == 4:
         print('Конец')
